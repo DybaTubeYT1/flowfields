@@ -1,6 +1,6 @@
 var inc = 0.1;
 var cols, rows;
-var scl = 20;
+var scl = 10;
 var speed = 1000;
 
 var zoff = 0;
@@ -8,6 +8,8 @@ var fr;
 var particles = []
 
 var flowfield;
+
+p5.disableFriendlyErrors = true;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -19,7 +21,8 @@ function setup() {
 
   flowfield = new Array((cols * rows))
 
-  for (var i = 0; i < 1000; i++) {
+  for (var i = 0; i < (windowWidth + windowHeight * 10); i++) {
+    console.log(i)
     particles[i] = new Particle();
 
   }
