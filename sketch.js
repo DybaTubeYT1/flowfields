@@ -5,7 +5,7 @@ var speed = 1000;
 
 var zoff = 0;
 var fr;
-var particles = []
+var particles = [];
 
 var flowfield;
 
@@ -13,16 +13,16 @@ p5.disableFriendlyErrors = true;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-
+  colorMode(HSB, 255);
+  console.log(frameRate())
 
   cols = floor(width / scl);
   rows = floor(height / scl);
   fr = createP('')
 
-  flowfield = new Array((cols * rows))
+  flowfield = new Array((cols * rows) * 10)
 
   for (var i = 0; i < (windowWidth + windowHeight * 10); i++) {
-    console.log(i)
     particles[i] = new Particle();
 
   }
@@ -33,6 +33,8 @@ function setup() {
 
 function draw(){
   var yoff = 0;
+  frameRate(30)
+
   for(let y = 0;y < rows;y++) {
     var xoff = 0;
 

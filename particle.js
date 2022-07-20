@@ -4,13 +4,14 @@ function Particle() {
     this.pos = createVector(random(width), random(height));
     this.vel = createVector(0,0);
     this.acc = createVector(0,0);
-    this.maxspeed = 2;
+    this.maxspeed = 3;
+    this.h = 0;
 
     this.prevPos = this.pos.copy();
 
     this.update = function() {
         this.vel.add(this.acc);
-        this.vel.limit(this.maxspeed)
+        this.vel.limit(this.maxspeed);
         this.pos.add(this.vel);
         this.acc.mult(0);
 
@@ -21,7 +22,11 @@ function Particle() {
     }
 
     this.show = function() {
-        stroke(0, 5);
+        stroke(this.h, 255, 255, 25);
+        this.h = this.h + 1;
+        if (this.h > 255) {
+            this.h = 0;
+        }
         strokeWeight(1);
         line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y)
         //point(this.pos.x, this.pos.y)
